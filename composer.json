@@ -1,0 +1,15 @@
+{
+    "name": "pitchart/version",
+    "description": "Manipulate version numbers",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "authors": [
+        {
+            "name": "Julien VITTE",
+            "email": "vitte.julien@gmail.com"
+        }
+    ],
+    "require": {}
+}
