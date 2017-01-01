@@ -11,5 +11,15 @@
             "email": "vitte.julien@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pitchart\\Version\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pitchart\\Version\\Test\\": "tests/"
+        }
+    }
 }
