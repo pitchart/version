@@ -49,7 +49,19 @@ class Version
     }
 
     public function incrementMajor() {
-        return new self(sprintf('%d.0.0', $this->major + 1));
+        return new static(sprintf('%d.0.0', $this->major + 1));
+    }
+
+    public function withPreRelease($preReleaseVersion) {
+        $self = clone $this;
+        $self->preRelease = $preReleaseVersion;
+        return $self;
+    }
+
+    public function withBuildMetadata($buildMetadata) {
+        $self = clone $this;
+        $self->buildMetadata = $buildMetadata;
+        return $self;
     }
 
 }

@@ -33,6 +33,20 @@ class VersionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($number, (string) $version);
     }
 
+    public function testMethodsKeppImutability() {
+        $version = new Version('1.2.3-pre.release+today');
+
+        $modifiedVersion = $version->incrementMajor()
+            ->incrementMinor()
+            ->incrementPatch()
+            ->withPreRelease('anotherprerelease')
+            ->withBuildMetadata('anotherday')
+        ;
+
+        $this->assertEquals('1.2.3-pre.release+today', (string) $version);
+        $this->assertEquals('2.1.1-anotherprerelease+anotherday', (string) $modifiedVersion);
+    }
+
     /**
      * @param string $number
      * @dataProvider invalidVersionsProvider
