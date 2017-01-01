@@ -1,6 +1,6 @@
 <?php
 
-namespace Pitchart\Version\Test;
+namespace Pitchart\Version\Test\Unit;
 
 use Pitchart\Version\Version;
 use Pitchart\Version\VersionException;
