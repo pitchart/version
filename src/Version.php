@@ -4,7 +4,13 @@ namespace Pitchart\Version;
 
 class Version
 {
-    private static $expression = '/^(?<major>(0|[1-9]\d*))\.(?<minor>(0|[1-9]\d*))\.(?<patch>(0|[1-9]\d*))(-(?<prerelease>[0-9a-zA-Z.]+))?(\+(?<build>[0-9a-zA-Z.]+))?$/';
+    private static $expression =
+        '/^(?<major>(0|[1-9]\d*))'
+        .'\.(?<minor>(0|[1-9]\d*))'
+        .'\.(?<patch>(0|[1-9]\d*))'
+        .'(-(?<prerelease>[0-9a-zA-Z.]+))?'
+        .'(\+(?<build>[0-9a-zA-Z\-.]+))?'
+        .'$/';
 
     private $major;
 
