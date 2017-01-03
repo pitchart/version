@@ -85,9 +85,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
             ['1.0.0-alpha.1'],
             ['1.0.0-0.3.7'],
             ['1.0.0-x.7.z.92'],
+            ['1.0.0-x.7-rc.z.92'],
             ['1.0.0-alpha+001'],
             ['1.0.0+20130313144700'],
             ['1.0.0-beta+exp.sha.5114f85'],
+            ['1.0.0-beta.1+exp.sha.5114f85'],
         ];
     }
 
@@ -98,7 +100,9 @@ class VersionTest extends \PHPUnit_Framework_TestCase
             ['01.0.0'],
             ['1.01.0'],
             ['1.1.01'],
-            ['1.1.0-'],
+            ['1.1.0-.stable'],
+            ['1.1.0-01'],
+            ['1.1.0-stable.01'],
             ['1.1.0-+'],
             ['1.1.0-+test'],
             ['1.1.0-test+'],
