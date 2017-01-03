@@ -41,11 +41,11 @@ class Version
     }
 
     public function incrementPatch() {
-        return new self(sprintf('%d.%d.%d', $this->major, $this->minor, $this->patch + 1));
+        return new static(sprintf('%d.%d.%d', $this->major, $this->minor, $this->patch + 1));
     }
 
     public function incrementMinor() {
-        return new self(sprintf('%d.%d.0', $this->major, $this->minor + 1));
+        return new static(sprintf('%d.%d.0', $this->major, $this->minor + 1));
     }
 
     public function incrementMajor() {
