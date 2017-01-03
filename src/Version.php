@@ -16,7 +16,8 @@ class Version
 
     private $buildMetadata;
 
-    public function __construct($number) {
+    public function __construct($number)
+    {
         if (!preg_match(self::$expression, $number, $matches)) {
             throw VersionException::invalidVersionNumber($number);
         }
@@ -27,41 +28,49 @@ class Version
         $this->buildMetadata = isset($matches['build']) ? $matches['build'] : '';
     }
 
-    public static function isValidVersionNumber($number) {
+    public static function isValidVersionNumber($number)
+    {
         return preg_match(self::$expression, $number) != false;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return sprintf(
-            '%d.%d.%d%s%s', 
-            $this->major, $this->minor, $this->patch, 
+            '%d.%d.%d%s%s',
+            $this->major,
+            $this->minor,
+            $this->patch,
             rtrim('-'.$this->preRelease, '-'),
             rtrim('+'.$this->buildMetadata, '+')
         );
     }
 
-    public function incrementPatch() {
+    public function incrementPatch()
+    {
         return new static(sprintf('%d.%d.%d', $this->major, $this->minor, $this->patch + 1));
     }
 
-    public function incrementMinor() {
+    public function incrementMinor()
+    {
         return new static(sprintf('%d.%d.0', $this->major, $this->minor + 1));
     }
 
-    public function incrementMajor() {
+    public function incrementMajor()
+    {
         return new static(sprintf('%d.0.0', $this->major + 1));
     }
 
-    public function withPreRelease($preReleaseVersion) {
+    public function withPreRelease($preReleaseVersion)
+    {
         $self = clone $this;
         $self->preRelease = $preReleaseVersion;
         return $self;
     }
 
-    public function withBuildMetadata($buildMetadata) {
+    public function withBuildMetadata($buildMetadata)
+    {
         $self = clone $this;
         $self->buildMetadata = $buildMetadata;
         return $self;
     }
-
 }

@@ -9,7 +9,8 @@ use Composer\Semver\Semver;
 class ComposerSemverUsageTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testCanBeComparedWithSemverComparator() {
+    public function testCanBeComparedWithSemverComparator()
+    {
         $version = new Version('1.0.0');
         $this->assertTrue(Comparator::greaterThan($version->incrementPatch(), $version));
         $this->assertTrue(Comparator::greaterThanOrEqualTo($version->incrementPatch(), $version));
@@ -35,14 +36,16 @@ class ComposerSemverUsageTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider satisfiesProvider
      */
-    public function testCanSatisfyConstraints($number, $constraint) {
+    public function testCanSatisfyConstraints($number, $constraint)
+    {
         $this->assertTrue(Semver::satisfies(new Version($number), $constraint));
     }
 
     /**
      * @return array()
      */
-    public function satisfiesProvider() {
+    public function satisfiesProvider()
+    {
         return array(
             array('1.2.3', '1.0.0 - 2.0.0'),
             array('1.2.3', '^1.2.3+build'),
@@ -68,5 +71,4 @@ class ComposerSemverUsageTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-
 }

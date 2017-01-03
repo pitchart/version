@@ -12,7 +12,8 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      * @param string $number
      * @dataProvider validVersionsProvider
      */
-    public function testValidatesVersionNumbers($number) {
+    public function testValidatesVersionNumbers($number)
+    {
         $this->assertTrue(Version::isValidVersionNumber($number));
     }
 
@@ -20,7 +21,8 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      * @param string $number
      * @dataProvider invalidVersionsProvider
      */
-    public function testInvalidatesWrongVersionNumbers($number) {
+    public function testInvalidatesWrongVersionNumbers($number)
+    {
         $this->assertFalse(Version::isValidVersionNumber($number));
     }
 
@@ -28,12 +30,14 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      * @param string $number
      * @dataProvider validVersionsProvider
      */
-    public function testCastAsStringRetrieveOriginalNumber($number) {
+    public function testCastAsStringRetrieveOriginalNumber($number)
+    {
         $version = new Version($number);
         $this->assertEquals($number, (string) $version);
     }
 
-    public function testMethodsKeppImutability() {
+    public function testMethodsKeppImutability()
+    {
         $version = new Version('1.2.3-pre.release+today');
 
         $modifiedVersion = $version->incrementMajor()
@@ -51,24 +55,28 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      * @param string $number
      * @dataProvider invalidVersionsProvider
      */
-    public function testCreateVersionFromInvalidNumberThrowsException($number) {
+    public function testCreateVersionFromInvalidNumberThrowsException($number)
+    {
         $this->expectException(VersionException::class);
         $version = new Version($number);
     }
 
-    public function testIncrementMinorNumberResetsPatchNumber() {
+    public function testIncrementMinorNumberResetsPatchNumber()
+    {
         $version = new Version('1.1.1');
         $version = $version->incrementMinor();
         $this->assertEquals('1.2.0', (string) $version);
     }
 
-    public function testIncrementMajorNumberResetsPatchAndMinorNumbers() {
+    public function testIncrementMajorNumberResetsPatchAndMinorNumbers()
+    {
         $version = new Version('1.1.1');
         $version = $version->incrementMajor();
         $this->assertEquals('2.0.0', (string) $version);
     }
 
-    public function validVersionsProvider() {
+    public function validVersionsProvider()
+    {
         return [
             ['0.9.14'],
             ['1.5.6'],
@@ -83,7 +91,8 @@ class VersionTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function invalidVersionsProvider() {
+    public function invalidVersionsProvider()
+    {
         return [
             ['1.0'],
             ['01.0.0'],
@@ -97,5 +106,4 @@ class VersionTest extends \PHPUnit_Framework_TestCase
             ['1.1.0-test+é'],
         ];
     }
-
 }
