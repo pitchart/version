@@ -105,7 +105,10 @@ class VersionTest extends \PHPUnit_Framework_TestCase
             ['1.1.0-stable.01'],
             ['1.1.0-+'],
             ['1.1.0-+test'],
+            ['1.1.0-.+test'],
             ['1.1.0-test+'],
+            ['1.1.0-test+.'],
+            ['1.0.0-alpha+001.'],
             ['1.1.0-é+test'],
             ['1.1.0-test+é'],
         ];
